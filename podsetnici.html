@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Podsetnici · GIGA klima servis</title>
+<meta name="theme-color" content="#0048BC">
+<meta name="robots" content="noindex">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="GIGA servis">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>
+html,body{margin:0;height:100%;background:#DCE6EE;font-family:Inter,system-ui,sans-serif;-webkit-tap-highlight-color:transparent;overscroll-behavior:none}
+button,input,select,textarea{font-family:inherit}
+a,button{cursor:pointer}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/template" id="tpl">
+
+<div style="width:100%;max-width:520px;height:100dvh;margin:0 auto;box-sizing:border-box;background:#F2F7FA;color:#0B2540;display:flex;flex-direction:column;overflow:hidden;font-family:Inter,system-ui,sans-serif">
+  <div style="padding:20px 20px 12px">
+    <div style="margin-bottom:8px"><img src="logo.png" alt="GIGA klima" style="height:30px;width:auto;display:block"/></div>
+    <div style="font-size:24px;font-weight:700;margin-top:2px">Podsetnici</div>
+    <div style="font-size:14px;color:#41566B;margin-top:2px">Godišnji servis, novembar 2026</div>
+  </div>
+  <div style="padding:0 20px 8px;display:flex;gap:8px">
+    <div style="font-size:13px;font-weight:600;color:#fff;background:#0048BC;border-radius:999px;padding:8px 14px">Za slanje · 3</div>
+    <div style="font-size:13px;font-weight:600;color:#41566B;background:#fff;border:1px solid #CBD9E3;border-radius:999px;padding:8px 14px">Poslato · 2</div>
+  </div>
+  <div style="padding:8px 20px 0;display:flex;flex-direction:column;gap:10px;flex:1;min-height:0">
+    <div style="background:#fff;border:1px solid #D9E5ED;border-radius:16px;padding:14px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+        <div style="font-size:15px;font-weight:700">Marko Petrović</div>
+        <div style="font-size:12px;font-weight:600;color:#8A4B08;background:#FDF0DC;border-radius:999px;padding:4px 10px;white-space:nowrap">Ovaj mesec</div>
+      </div>
+      <div style="font-size:13px;color:#41566B;margin-top:4px">2 klime · poslednji servis 21. 11. 2025</div>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px">
+        <button style="height:48px;border-radius:12px;font:600 15px Inter,system-ui,sans-serif;border:1px solid #0048BC;background:#fff;color:#0048BC">Pozovi</button>
+        <button style="height:48px;border-radius:12px;font:600 15px Inter,system-ui,sans-serif;border:0;background:#0048BC;color:#fff">Pošalji SMS</button>
+      </div>
+    </div>
+    <div style="background:#fff;border:1px solid #D9E5ED;border-radius:16px;padding:14px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+        <div style="font-size:15px;font-weight:700">Ana Jovanović</div>
+        <div style="font-size:12px;font-weight:600;color:#8A4B08;background:#FDF0DC;border-radius:999px;padding:4px 10px;white-space:nowrap">Ovaj mesec</div>
+      </div>
+      <div style="font-size:13px;color:#41566B;margin-top:4px">1 klima · poslednji servis 24. 11. 2025</div>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px">
+        <button style="height:48px;border-radius:12px;font:600 15px Inter,system-ui,sans-serif;border:1px solid #0048BC;background:#fff;color:#0048BC">Pozovi</button>
+        <button style="height:48px;border-radius:12px;font:600 15px Inter,system-ui,sans-serif;border:0;background:#0048BC;color:#fff">Pošalji SMS</button>
+      </div>
+    </div>
+    <div style="background:#fff;border:1px solid #D9E5ED;border-radius:16px;padding:14px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+        <div style="font-size:15px;font-weight:700">Dragan Simić</div>
+        <div style="font-size:12px;font-weight:600;color:#9B1C1C;background:#FBE4E4;border-radius:999px;padding:4px 10px;white-space:nowrap">Kasni 19 dana</div>
+      </div>
+      <div style="font-size:13px;color:#41566B;margin-top:4px">3 klime · poslednji servis 2. 11. 2025</div>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px">
+        <button style="height:48px;border-radius:12px;font:600 15px Inter,system-ui,sans-serif;border:1px solid #0048BC;background:#fff;color:#0048BC">Pozovi</button>
+        <button style="height:48px;border-radius:12px;font:600 15px Inter,system-ui,sans-serif;border:0;background:#0048BC;color:#fff">Pošalji SMS</button>
+      </div>
+    </div>
+  </div>
+  <div style="height:72px;box-sizing:border-box;background:#fff;border-top:1px solid #D9E5ED;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))">
+    <a href="index.html" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#41566B;text-decoration:none;font-size:12px;font-weight:500">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Danas</a>
+    <a href="kalendar.html" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#41566B;text-decoration:none;font-size:12px;font-weight:500">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Kalendar</a>
+    <a href="klijent.html" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#41566B;text-decoration:none;font-size:12px;font-weight:500">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg>Klijenti</a>
+    <a href="podsetnici.html" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#0048BC;text-decoration:none;font-size:12px;font-weight:600">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Podsetnici</a>
+  </div></div>
+</script>
+<script src="dc-lite.js"></script>
+<script>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+DCMount(Component, 'tpl', 'app');
+if ('serviceWorker' in navigator) { window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); }); }
+</script>
+</body>
+</html>

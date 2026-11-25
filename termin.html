@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Novi termin · GIGA klima servis</title>
+<meta name="theme-color" content="#0048BC">
+<meta name="robots" content="noindex">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="GIGA servis">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>
+html,body{margin:0;height:100%;background:#DCE6EE;font-family:Inter,system-ui,sans-serif;-webkit-tap-highlight-color:transparent;overscroll-behavior:none}
+button,input,select,textarea{font-family:inherit}
+a,button{cursor:pointer}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/template" id="tpl">
+
+<div style="width:100%;max-width:520px;height:100dvh;margin:0 auto;box-sizing:border-box;background:#F2F7FA;color:#0B2540;display:flex;flex-direction:column;overflow:hidden;font-family:Inter,system-ui,sans-serif">
+  <div style="padding:16px 20px 8px;display:flex;align-items:center;gap:12px">
+    <a href="index.html" aria-label="Nazad" style="width:48px;height:48px;border-radius:24px;border:1px solid #CBD9E3;background:#fff;color:#0B2540;display:flex;align-items:center;justify-content:center;text-decoration:none">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></a>
+    <div style="font-size:20px;font-weight:700">Novi termin</div>
+  </div>
+  <div style="padding:0 20px 12px;display:flex;flex-direction:column;gap:12px;flex:1;min-height:0;overflow-y:auto">
+    <div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+        <span style="font-size:13px;font-weight:600;color:#41566B">Klijent</span>
+        <label style="display:flex;align-items:center;gap:8px;min-height:44px;font-size:14px;font-weight:600;color:#0B2540">
+          <input type="checkbox" checked="{{ legal }}" onChange="{{ toggleLegal }}" style="width:22px;height:22px;accent-color:#0048BC;margin:0">
+          Pravno lice
+        </label>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px">
+        <div><label for="ime" style="display:block;font-size:13px;font-weight:600;color:#41566B;margin-bottom:6px">{{ nameLabel }}</label><input id="ime" value="{{ nameValue }}" style="width:100%;box-sizing:border-box;border:1px solid #CBD9E3;border-radius:12px;background:#fff;color:#0B2540;font:400 15px Inter,system-ui,sans-serif;padding:0 12px;height:48px"></div>
+        <div><label for="tel" style="display:block;font-size:13px;font-weight:600;color:#41566B;margin-bottom:6px">Telefon</label><input id="tel" value="063 555 1212" style="width:100%;box-sizing:border-box;border:1px solid #CBD9E3;border-radius:12px;background:#fff;color:#0B2540;font:400 15px Inter,system-ui,sans-serif;padding:0 12px;height:48px"></div>
+      </div>
+      <sc-if value="{{ legal }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:10px"><label for="pib" style="display:block;font-size:13px;font-weight:600;color:#41566B;margin-bottom:6px">PIB</label><input id="pib" value="123456789" style="width:100%;box-sizing:border-box;border:1px solid #CBD9E3;border-radius:12px;background:#fff;color:#0B2540;font:400 15px Inter,system-ui,sans-serif;padding:0 12px;height:48px"></div>
+      </sc-if>
+    </div>
+    <div>
+      <label for="adr" style="display:block;font-size:13px;font-weight:600;color:#41566B;margin-bottom:6px">Adresa</label>
+      <input id="adr" value="Cara Dušana 7, Zemun" style="width:100%;box-sizing:border-box;border:1px solid #CBD9E3;border-radius:12px;background:#fff;color:#0B2540;font:400 15px Inter,system-ui,sans-serif;padding:0 12px;height:48px">
+    </div>
+    <div>
+      <div style="display:block;font-size:13px;font-weight:600;color:#41566B;margin-bottom:6px">Vrsta posla</div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+        <sc-for list="{{ jobs }}" as="j" hint-placeholder-count="7">
+          <button aria-pressed="{{ j.pressed }}" onClick="{{ j.pick }}" style="{{ j.style }}">{{ j.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+    <sc-if value="{{ isSale }}" hint-placeholder-val="{{ true }}">
+      <div>
+        <label for="uredjaj" style="display:block;font-size:13px;font-weight:600;color:#41566B;margin-bottom:6px">Uređaj</label>
+        <sc-if value="{{ hasSelected }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;align-items:center;gap:12px;background:#E4F3FF;border:2px solid #0048BC;border-radius:14px;padding:10px 12px;min-height:56px">
+            <div style="flex:1;min-width:0">
+              <div style="font-size:15px;font-weight:700">{{ selected.name }}</div>
+              <div style="font-size:13px;color:#41566B;margin-top:2px">{{ selected.sub }}</div>
+            </div>
+            <button onClick="{{ clearSelected }}" style="height:40px;padding:0 14px;border-radius:10px;border:1px solid #0048BC;background:#fff;color:#0048BC;font:600 14px Inter,system-ui,sans-serif">Promeni</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ noSelected }}" hint-placeholder-val="{{ true }}">
+          <div>
+            <div style="position:relative">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#41566B" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="position:absolute;left:12px;top:14px"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+              <input id="uredjaj" value="{{ query }}" onInput="{{ onQuery }}" placeholder="Kucaj model, npr. Midea 12" style="width:100%;box-sizing:border-box;border:1px solid #CBD9E3;border-radius:12px;background:#fff;color:#0B2540;font:400 15px Inter,system-ui,sans-serif;height:48px;padding-left:40px">
+            </div>
+            <div style="font-size:12px;color:#41566B;margin:6px 0 6px">{{ hint }}</div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <sc-for list="{{ suggestions }}" as="d" hint-placeholder-count="3">
+                <button onClick="{{ d.pick }}" style="display:flex;align-items:center;gap:12px;width:100%;box-sizing:border-box;text-align:left;border-radius:14px;padding:10px 12px;min-height:56px;font-family:Inter,system-ui,sans-serif;color:#0B2540;border:1px solid #D9E5ED;background:#fff">
+                  <span style="flex:1;min-width:0">
+                    <span style="display:block;font-size:15px;font-weight:700">{{ d.name }}</span>
+                    <span style="display:block;font-size:13px;font-weight:400;color:#41566B;margin-top:2px">{{ d.sub }}</span>
+                  </span>
+                </button>
+              </sc-for>
+              <sc-if value="{{ showManual }}" hint-placeholder-val="{{ true }}">
+                <button style="width:100%;box-sizing:border-box;text-align:left;border-radius:14px;padding:10px 12px;min-height:48px;border:1.5px dashed #0048BC;background:#fff;color:#0048BC;font:600 14px Inter,system-ui,sans-serif">Nema u katalogu? Unesi ručno: {{ query }}</button>
+              </sc-if>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+    <sc-if value="{{ isSale }}" hint-placeholder-val="{{ true }}">
+      <div>
+        <div style="display:block;font-size:13px;font-weight:600;color:#41566B;margin-bottom:6px">Garancija</div>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+          <sc-for list="{{ warranty }}" as="w" hint-placeholder-count="3">
+            <button aria-pressed="{{ w.pressed }}" onClick="{{ w.pick }}" style="{{ w.style }}">{{ w.label }}</button>
+          </sc-for>
+        </div>
+        <div style="font-size:12px;color:#41566B;margin-top:6px">{{ warrantyNote }}</div>
+      </div>
+    </sc-if>
+    <div>
+      <label for="nap" style="display:block;font-size:13px;font-weight:600;color:#41566B;margin-bottom:6px">Napomena</label>
+      <textarea id="nap" rows="3" placeholder="Šta je klijent rekao, kako do lokacije, šta poneti..." style="width:100%;box-sizing:border-box;border:1px solid #CBD9E3;border-radius:12px;background:#fff;color:#0B2540;font:400 15px Inter,system-ui,sans-serif;padding:10px 12px;resize:none"></textarea>
+    </div>
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px">
+      <div><label for="dat" style="display:block;font-size:13px;font-weight:600;color:#41566B;margin-bottom:6px">Datum</label><input id="dat" value="21. 11. 2026" style="width:100%;box-sizing:border-box;border:1px solid #CBD9E3;border-radius:12px;background:#fff;color:#0B2540;font:400 15px Inter,system-ui,sans-serif;padding:0 12px;height:48px"></div>
+      <div><label for="vre" style="display:block;font-size:13px;font-weight:600;color:#41566B;margin-bottom:6px">Vreme</label><input id="vre" value="15:00" style="width:100%;box-sizing:border-box;border:1px solid #CBD9E3;border-radius:12px;background:#fff;color:#0B2540;font:400 15px Inter,system-ui,sans-serif;padding:0 12px;height:48px"></div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid #D9E5ED;border-radius:14px;padding:10px 12px">
+      <div style="font-size:14px;font-weight:600">Pošalji klijentu SMS potvrdu termina</div>
+      <button aria-pressed="true" aria-label="SMS potvrda uključena" style="width:52px;height:32px;border-radius:16px;border:0;background:#0048BC;position:relative;flex:none"><span style="position:absolute;top:4px;right:4px;width:24px;height:24px;border-radius:12px;background:#fff"></span></button>
+    </div>
+  </div>
+  <div style="padding:12px 20px 20px;background:#fff;border-top:1px solid #D9E5ED">
+    <a href="index.html" style="display:flex;align-items:center;justify-content:center;height:56px;border-radius:14px;background:#0048BC;color:#fff;text-decoration:none;font:700 16px Inter,system-ui,sans-serif">Zakaži termin</a>
+  </div>
+</div>
+</script>
+<script src="dc-lite.js"></script>
+<script>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { job: 'sale', device: null, query: 'mid', legal: false, years: 2 };
+}
+renderVals() {
+const job = this.state.job;
+const device = this.state.device;
+const jobDefs = [
+{ id: 'sale', label: 'Prodaja + montaža', wide: true },
+{ id: 'service', label: 'Servis' },
+{ id: 'clean', label: 'Čišćenje' },
+{ id: 'gas', label: 'Dopuna gasa' },
+{ id: 'fault', label: 'Kvar' },
+{ id: 'install', label: 'Ugradnja' },
+{ id: 'remove', label: 'Demontaža' }
+];
+const base = 'height:44px;border-radius:12px;font:600 14px Inter,system-ui,sans-serif;';
+const jobs = jobDefs.map((j) => {
+const on = j.id === job;
+return {
+label: j.label,
+pressed: on,
+pick: () => this.setState({ job: j.id }),
+style: base + (j.wide ? 'grid-column:1 / -1;' : '') + (on ? 'border:2px solid #0048BC;background:#E4F3FF;color:#0048BC' : 'border:1px solid #CBD9E3;background:#fff;color:#0B2540')
+};
+});
+const catalog = [
+{ id: 'midea12', name: 'Midea Xtremeinverter 12', sub: '12000 BTU · inverter, zidna' },
+{ id: 'midea18', name: 'Midea Xtremeinverter 18', sub: '18000 BTU · inverter, zidna' },
+{ id: 'gree12', name: 'Gree Pular 12', sub: '12000 BTU · inverter, zidna' },
+{ id: 'gree18', name: 'Gree Pular 18', sub: '18000 BTU · inverter, zidna' },
+{ id: 'daikin18', name: 'Daikin Perfera 18', sub: '18000 BTU · inverter, zidna' },
+{ id: 'lg12', name: 'LG Standard 12', sub: '12000 BTU · inverter, zidna' }
+];
+const q = (this.state.query || '').trim().toLowerCase();
+const tokens = q.split(/\s+/).filter(Boolean);
+const found = tokens.length === 0 ? catalog.slice(0, 3) : catalog.filter((d) => tokens.every((t) => (d.name + ' ' + d.sub).toLowerCase().includes(t)));
+const suggestions = found.slice(0, 4).map((d) => ({ name: d.name, sub: d.sub, pick: () => this.setState({ device: d.id }) }));
+const selected = catalog.find((d) => d.id === device) || null;
+const wBase = 'height:48px;border-radius:12px;font:600 15px Inter,system-ui,sans-serif;';
+const warranty = [2, 3, 5].map((y) => {
+const on = y === this.state.years;
+return {
+label: y + ' god.',
+pressed: on,
+pick: () => this.setState({ years: y }),
+style: wBase + (on ? 'border:2px solid #0048BC;background:#E4F3FF;color:#0048BC' : 'border:1px solid #CBD9E3;background:#fff;color:#0B2540')
+};
+});
+const warrantyNote = 'Počinje od montaže, ističe 21. 11. ' + (2026 + this.state.years) + '. uz redovne godišnje servise';
+return {
+warranty,
+warrantyNote,
+legal: this.state.legal,
+toggleLegal: () => this.setState({ legal: !this.state.legal }),
+nameLabel: this.state.legal ? 'Naziv firme' : 'Ime i prezime',
+nameValue: this.state.legal ? 'Nikolić d.o.o.' : 'Stan Nikolić',
+jobs,
+suggestions,
+selected: selected || { name: '', sub: '' },
+hasSelected: !!selected,
+noSelected: !selected,
+query: this.state.query || '',
+hint: tokens.length === 0 ? 'Najčešće birani uređaji' : (found.length === 0 ? 'Nema rezultata u katalogu' : 'Rezultati iz kataloga'),
+showManual: tokens.length > 0,
+onQuery: (e) => this.setState({ query: e.target.value }),
+clearSelected: () => this.setState({ device: null }),
+isSale: job === 'sale',
+isNotSale: job !== 'sale'
+};
+}
+}
+DCMount(Component, 'tpl', 'app');
+if ('serviceWorker' in navigator) { window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); }); }
+</script>
+</body>
+</html>

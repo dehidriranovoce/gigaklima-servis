@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Prihodi · GIGA klima servis</title>
+<meta name="theme-color" content="#0048BC">
+<meta name="robots" content="noindex">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="GIGA servis">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>
+html,body{margin:0;height:100%;background:#DCE6EE;font-family:Inter,system-ui,sans-serif;-webkit-tap-highlight-color:transparent;overscroll-behavior:none}
+button,input,select,textarea{font-family:inherit}
+a,button{cursor:pointer}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/template" id="tpl">
+
+<div style="width:100%;max-width:520px;height:100dvh;margin:0 auto;box-sizing:border-box;background:#F2F7FA;color:#0B2540;display:flex;flex-direction:column;overflow:hidden;font-family:Inter,system-ui,sans-serif">
+  <div style="padding:16px 20px 8px;display:flex;align-items:center;gap:12px">
+    <a href="index.html" aria-label="Nazad" style="width:48px;height:48px;border-radius:24px;border:1px solid #CBD9E3;background:#fff;color:#0B2540;display:flex;align-items:center;justify-content:center;text-decoration:none">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></a>
+    <div style="font-size:20px;font-weight:700;flex:1">Prihodi</div>
+    <div style="display:flex;gap:4px;background:#E3ECF2;border-radius:12px;padding:4px">
+      <sc-for list="{{ years }}" as="y" hint-placeholder-count="2">
+        <button aria-pressed="{{ y.pressed }}" onClick="{{ y.pick }}" style="{{ y.style }}">{{ y.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+  <div style="flex:1;min-height:0;overflow-y:auto;padding:0 20px 20px">
+    <div style="padding:8px 0 4px">
+      <div style="font-size:13px;font-weight:600;color:#41566B">{{ monthName }} {{ yearLabel }}</div>
+      <div style="font-size:32px;font-weight:700;margin-top:2px">{{ totalText }}</div>
+      <div style="font-size:13px;color:#41566B;margin-top:2px">{{ deltaText }}</div>
+      <div style="font-size:13px;color:#41566B;margin-top:2px">Ukupno u {{ yearLabel }}: {{ yearTotal }}</div>
+    </div>
+    <div style="background:#fff;border:1px solid #D9E5ED;border-radius:16px;padding:12px 12px 8px;margin-top:8px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <div style="font-size:14px;font-weight:600">Prihod po mesecima</div>
+        <button aria-pressed="{{ showTable }}" onClick="{{ toggleTable }}" style="height:36px;padding:0 12px;border-radius:10px;border:1px solid #CBD9E3;background:#fff;color:#0048BC;font:600 13px Inter,system-ui,sans-serif">{{ tableBtn }}</button>
+      </div>
+      <sc-if value="{{ chartMode }}" hint-placeholder-val="{{ true }}">
+        <div style="position:relative;height:174px">
+          <sc-for list="{{ grid }}" as="g" hint-placeholder-count="3">
+            <div style="{{ g.lineStyle }}"></div>
+            <div style="{{ g.labelStyle }}">{{ g.label }}</div>
+          </sc-for>
+          <div style="position:absolute;left:0;right:0;top:0;bottom:0;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:0">
+            <sc-for list="{{ bars }}" as="b" hint-placeholder-count="12">
+              <button aria-pressed="{{ b.pressed }}" aria-label="{{ b.aria }}" onClick="{{ b.pick }}" style="display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:174px;padding:0;border:0;background:transparent;font-family:Inter,system-ui,sans-serif">
+                <span style="font-size:11px;font-weight:700;color:#0B2540;height:16px;line-height:16px">{{ b.top }}</span>
+                <span style="{{ b.barStyle }}"></span>
+                <span style="{{ b.monthStyle }}">{{ b.m }}</span>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ showTable }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column">
+          <sc-for list="{{ rows }}" as="r" hint-placeholder-count="12">
+            <div style="display:flex;justify-content:space-between;padding:7px 0;border-top:1px solid #E3ECF2;font-size:14px"><span>{{ r.m }}</span><span style="font-weight:600">{{ r.v }}</span></div>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+    <div style="font-size:15px;font-weight:600;padding:20px 0 8px">Po vrsti posla, {{ monthLower }}</div>
+    <div style="background:#fff;border:1px solid #D9E5ED;border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:12px">
+      <sc-for list="{{ kinds }}" as="k" hint-placeholder-count="6">
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:14px"><span>{{ k.name }}</span><span style="font-weight:600">{{ k.value }}</span></div>
+          <div style="height:8px;border-radius:4px;background:#E4F3FF;margin-top:6px"><div style="{{ k.fill }}"></div></div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="font-size:15px;font-weight:600;padding:20px 0 8px">Čeka naplatu</div>
+    <div style="background:#fff;border:1px solid #D9E5ED;border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:14px;font-weight:600">Nikolić d.o.o.</div><div style="font-size:12px;color:#41566B;margin-top:2px">Servis 8 uređaja · rok 28. 11.</div></div><div style="font-size:14px;font-weight:700">24.000 din</div></div>
+      <div style="height:1px;background:#E3ECF2"></div>
+      <div style="display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:14px;font-weight:600">Stan Nikolić</div><div style="font-size:12px;color:#41566B;margin-top:2px">Kvar · plaća gotovinom</div></div><div style="font-size:14px;font-weight:700">8.000 din</div></div>
+      <div style="height:1px;background:#E3ECF2"></div>
+      <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700"><span>Ukupno</span><span>32.000 din</span></div>
+    </div>
+    <div style="font-size:12px;color:#41566B;padding-top:12px">Brojevi su primer. Prihod je ono što su klijenti platili ili duguju po nalozima.</div>
+  </div>
+</div>
+</script>
+<script src="dc-lite.js"></script>
+<script>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { year: 2026, month: 11, table: false };
+}
+renderVals() {
+const year = this.state.year;
+const sel = this.state.month;
+const data = {
+2026: [180000, 210000, 340000, 460000, 520000, 610000, 580000, 420000, 380000, 350000, 412000, null],
+2025: [150000, 190000, 290000, 410000, 470000, 540000, 520000, 380000, 340000, 300000, 330000, 260000]
+};
+const vals = data[year];
+const full = ['Januar', 'Februar', 'Mart', 'April', 'Maj', 'Jun', 'Jul', 'Avgust', 'Septembar', 'Oktobar', 'Novembar', 'Decembar'];
+const short = ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Avg', 'Sep', 'Okt', 'Nov', 'Dec'];
+const money = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' din';
+const kfmt = (n) => Math.round(n / 1000) + 'k';
+const max = Math.max.apply(null, vals.filter((v) => v !== null));
+const top = Math.ceil(max / 200000) * 200000;
+const plot = 150;
+const bars = vals.map((v, i) => {
+const on = i + 1 === sel;
+const h = v === null ? 0 : Math.max(2, Math.round(v / top * plot));
+return {
+m: short[i],
+top: on && v !== null ? kfmt(v) : '',
+aria: full[i] + ' ' + year + ', ' + (v === null ? 'još nema podataka' : money(v)) + (year === 2026 && i === 10 ? ', mesec je u toku' : ''),
+pressed: on,
+pick: () => this.setState({ month: i + 1 }),
+barStyle: 'display:block;width:18px;height:' + h + 'px;border-radius:4px 4px 0 0;background:' + (on ? '#0048BC' : '#6F98D8'),
+monthStyle: 'display:block;height:24px;line-height:24px;font-size:11px;color:' + (on ? '#0B2540' : '#41566B') + ';font-weight:' + (on ? 700 : 500)
+};
+});
+const ticks = [0, 0.5, 1];
+const grid = ticks.map((f) => ({
+lineStyle: 'position:absolute;left:0;right:0;bottom:' + (24 + Math.round(f * plot)) + 'px;height:1px;background:' + (f === 0 ? '#9AAEC0' : '#E3ECF2'),
+labelStyle: 'position:absolute;left:0;bottom:' + (26 + Math.round(f * plot)) + 'px;font-size:10px;color:#41566B',
+label: f === 0 ? '' : Math.round(top * f / 1000) + 'k'
+}));
+const v = vals[sel - 1];
+const prev = sel > 1 ? vals[sel - 2] : null;
+let deltaText = '';
+if (v === null) {
+deltaText = 'Još nema podataka za ovaj mesec';
+} else if (prev) {
+const p = Math.round((v - prev) / prev * 100);
+deltaText = (p >= 0 ? '+' : '') + p + '% u odnosu na prošli mesec' + (year === 2026 && sel === 11 ? ' · mesec je u toku' : '');
+} else {
+deltaText = 'Početak godine';
+}
+const yearTotal = vals.reduce((a, b) => a + (b || 0), 0);
+const kindNames = ['Prodaja + montaža', 'Ugradnja', 'Servis', 'Čišćenje', 'Kvar', 'Dopuna gasa'];
+const base = [38, 22, 18, 10, 8, 4];
+const raw = base.map((b, i) => Math.max(2, b + ((sel * (i + 3)) % 5) - 2));
+const sum = raw.reduce((a, b) => a + b, 0);
+const total = v || 0;
+const amounts = raw.map((r) => Math.round(total * r / sum / 100) * 100);
+amounts[0] = total - amounts.slice(1).reduce((a, b) => a + b, 0);
+const kinds = kindNames.map((n, i) => ({
+name: n,
+value: total === 0 ? '0 din' : money(amounts[i]),
+fill: 'height:8px;border-radius:4px;background:#0048BC;width:' + (total === 0 ? 0 : Math.round(amounts[i] / total * 100)) + '%'
+}));
+const rows = vals.map((x, i) => ({ m: full[i], v: x === null ? '–' : money(x) }));
+const years = [2026, 2025].map((y) => ({
+label: String(y),
+pressed: y === year,
+pick: () => this.setState({ year: y }),
+style: 'height:36px;padding:0 14px;border-radius:8px;border:0;font:600 14px Inter,system-ui,sans-serif;' + (y === year ? 'background:#fff;color:#0048BC;box-shadow:0 1px 3px rgba(11,37,64,0.15)' : 'background:transparent;color:#41566B')
+}));
+return {
+years,
+yearLabel: String(year),
+monthName: full[sel - 1],
+monthLower: full[sel - 1].toLowerCase(),
+totalText: v === null ? '–' : money(v),
+deltaText,
+yearTotal: money(yearTotal),
+bars,
+grid,
+kinds,
+rows,
+chartMode: !this.state.table,
+showTable: this.state.table,
+tableBtn: this.state.table ? 'Grafikon' : 'Tabela',
+toggleTable: () => this.setState({ table: !this.state.table })
+};
+}
+}
+DCMount(Component, 'tpl', 'app');
+if ('serviceWorker' in navigator) { window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); }); }
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Završi nalog · GIGA klima servis</title>
+<meta name="theme-color" content="#0048BC">
+<meta name="robots" content="noindex">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="GIGA servis">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>
+html,body{margin:0;height:100%;background:#DCE6EE;font-family:Inter,system-ui,sans-serif;-webkit-tap-highlight-color:transparent;overscroll-behavior:none}
+button,input,select,textarea{font-family:inherit}
+a,button{cursor:pointer}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/template" id="tpl">
+
+<div style="width:100%;max-width:520px;height:100dvh;margin:0 auto;box-sizing:border-box;background:#F2F7FA;color:#0B2540;display:flex;flex-direction:column;overflow:hidden;font-family:Inter,system-ui,sans-serif">
+  <div style="padding:16px 20px 8px;display:flex;align-items:center;gap:12px">
+    <a href="index.html" aria-label="Nazad" style="width:48px;height:48px;border-radius:24px;border:1px solid #CBD9E3;background:#fff;color:#0B2540;display:flex;align-items:center;justify-content:center;text-decoration:none">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></a>
+    <div style="font-size:20px;font-weight:700">Završi nalog</div>
+  </div>
+  <div style="padding:0 20px;display:flex;flex-direction:column;gap:12px;flex:1;min-height:0">
+    <div style="background:#fff;border:1px solid #D9E5ED;border-radius:14px;padding:12px">
+      <div style="font-size:15px;font-weight:700">Jelena Ilić</div>
+      <div style="font-size:13px;color:#41566B;margin-top:2px">Novi Beograd, Bulevar 45/8 · 21. 11. 2026</div>
+    </div>
+    <div>
+      <label for="uredjaj" style="display:block;font-size:13px;font-weight:600;color:#41566B;margin-bottom:6px">Uređaj</label>
+      <select id="uredjaj" style="width:100%;box-sizing:border-box;border:1px solid #CBD9E3;border-radius:12px;background:#fff;color:#0B2540;font:400 15px Inter,system-ui,sans-serif;padding:0 12px;height:48px"><option>Gree 12000 BTU, dnevna soba</option><option>Dodaj novi uređaj</option></select>
+    </div>
+    <div>
+      <div style="display:block;font-size:13px;font-weight:600;color:#41566B;margin-bottom:6px">Šta je urađeno</div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+      <button aria-pressed="true" style="height:44px;border-radius:12px;border:2px solid #0048BC;background:#E4F3FF;color:#0048BC;font:600 14px Inter,system-ui,sans-serif">Servis</button>
+      <button aria-pressed="true" style="height:44px;border-radius:12px;border:2px solid #0048BC;background:#E4F3FF;color:#0048BC;font:600 14px Inter,system-ui,sans-serif">Čišćenje</button>
+      <button aria-pressed="false" style="height:44px;border-radius:12px;border:1px solid #CBD9E3;background:#fff;color:#0B2540;font:600 14px Inter,system-ui,sans-serif">Dopuna gasa</button>
+      <button aria-pressed="false" style="height:44px;border-radius:12px;border:1px solid #CBD9E3;background:#fff;color:#0B2540;font:600 14px Inter,system-ui,sans-serif">Kvar</button>
+      <button aria-pressed="false" style="height:44px;border-radius:12px;border:1px solid #CBD9E3;background:#fff;color:#0B2540;font:600 14px Inter,system-ui,sans-serif">Ugradnja</button>
+      <button aria-pressed="false" style="height:44px;border-radius:12px;border:1px solid #CBD9E3;background:#fff;color:#0B2540;font:600 14px Inter,system-ui,sans-serif">Demontaža</button>
+      </div>
+    </div>
+    <div>
+      <label for="opis" style="display:block;font-size:13px;font-weight:600;color:#41566B;margin-bottom:6px">Opis i materijal</label>
+      <textarea id="opis" rows="2" style="width:100%;box-sizing:border-box;border:1px solid #CBD9E3;border-radius:12px;background:#fff;color:#0B2540;font:400 15px Inter,system-ui,sans-serif;padding:0 12px;padding:10px 12px;resize:none">Očišćeni filteri i unutrašnja jedinica, proverena količina gasa</textarea>
+    </div>
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px">
+      <div>
+        <label for="cena" style="display:block;font-size:13px;font-weight:600;color:#41566B;margin-bottom:6px">Cena (din)</label>
+        <input id="cena" value="4000" style="width:100%;box-sizing:border-box;border:1px solid #CBD9E3;border-radius:12px;background:#fff;color:#0B2540;font:400 15px Inter,system-ui,sans-serif;padding:0 12px;height:48px">
+      </div>
+      <div>
+        <div style="display:block;font-size:13px;font-weight:600;color:#41566B;margin-bottom:6px">Plaćeno</div>
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px">
+          <button aria-pressed="true" style="height:48px;border-radius:12px;border:2px solid #0048BC;background:#E4F3FF;color:#0048BC;font:600 14px Inter,system-ui,sans-serif">Da</button>
+          <button aria-pressed="false" style="height:48px;border-radius:12px;border:1px solid #CBD9E3;background:#fff;color:#0B2540;font:600 14px Inter,system-ui,sans-serif">Ne</button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="display:block;font-size:13px;font-weight:600;color:#41566B;margin-bottom:6px">Fotografije</div>
+      <div style="display:flex;gap:8px">
+        <button aria-label="Dodaj fotografiju" style="width:64px;height:64px;border-radius:12px;border:1.5px dashed #0048BC;background:#fff;color:#0048BC;display:flex;align-items:center;justify-content:center">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        </button>
+        <div style="width:64px;height:64px;border-radius:12px;background:#D9E5ED"></div>
+        <div style="width:64px;height:64px;border-radius:12px;background:#D9E5ED"></div>
+      </div>
+    </div>
+  </div>
+  <div style="padding:12px 20px 20px;background:#fff;border-top:1px solid #D9E5ED">
+    <a href="index.html" style="display:flex;align-items:center;justify-content:center;height:56px;border-radius:14px;background:#0048BC;color:#fff;text-decoration:none;font:700 16px Inter,system-ui,sans-serif">Sačuvaj nalog</a>
+    <div style="font-size:12px;color:#41566B;text-align:center;margin-top:8px">Podsetnik za sledeći servis se pravi automatski (21. 11. 2027)</div>
+  </div>
+</div>
+</script>
+<script src="dc-lite.js"></script>
+<script>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+DCMount(Component, 'tpl', 'app');
+if ('serviceWorker' in navigator) { window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); }); }
+</script>
+</body>
+</html>

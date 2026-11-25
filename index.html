@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Danas · GIGA klima servis</title>
+<meta name="theme-color" content="#0048BC">
+<meta name="robots" content="noindex">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="GIGA servis">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>
+html,body{margin:0;height:100%;background:#DCE6EE;font-family:Inter,system-ui,sans-serif;-webkit-tap-highlight-color:transparent;overscroll-behavior:none}
+button,input,select,textarea{font-family:inherit}
+a,button{cursor:pointer}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/template" id="tpl">
+
+<div style="position:relative;width:100%;max-width:520px;height:100dvh;margin:0 auto;box-sizing:border-box;background:#F2F7FA;color:#0B2540;display:flex;flex-direction:column;overflow:hidden;font-family:Inter,system-ui,sans-serif">
+  <div style="padding:20px 20px 12px;display:flex;align-items:center;justify-content:space-between">
+    <div>
+      <div style="margin-bottom:8px"><img src="logo.png" alt="GIGA klima" style="height:30px;width:auto;display:block"/></div>
+      <div style="font-size:24px;font-weight:700;margin-top:2px">Danas</div>
+      <div style="font-size:14px;color:#41566B;margin-top:2px">Subota, 21. novembar</div>
+    </div>
+    <div style="display:flex;gap:8px">
+    <a href="zarada.html" aria-label="Prihodi" style="width:48px;height:48px;border-radius:24px;border:1px solid #CBD9E3;background:#fff;color:#0B2540;display:flex;align-items:center;justify-content:center;text-decoration:none">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15v-4M12 15V7M17 15v-6"/></svg></a>
+    <button aria-label="Notifikacije" style="width:48px;height:48px;border-radius:24px;border:1px solid #CBD9E3;background:#fff;color:#0B2540;display:flex;align-items:center;justify-content:center">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+    </button>
+    </div>
+  </div>
+  <div style="padding:0 20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px">
+    <div style="background:#fff;border:1px solid #D9E5ED;border-radius:14px;padding:12px">
+      <div style="font-size:26px;font-weight:700;color:#0048BC">3</div>
+      <div style="font-size:12px;color:#41566B;margin-top:2px">termina danas</div>
+    </div>
+    <div style="background:#fff;border:1px solid #D9E5ED;border-radius:14px;padding:12px">
+      <div style="font-size:26px;font-weight:700;color:#0048BC">5</div>
+      <div style="font-size:12px;color:#41566B;margin-top:2px">podsetnika za servis</div>
+    </div>
+    <div style="background:#fff;border:1px solid #D9E5ED;border-radius:14px;padding:12px">
+      <div style="font-size:26px;font-weight:700;color:#0048BC">1</div>
+      <div style="font-size:12px;color:#41566B;margin-top:2px">završen nalog</div>
+    </div>
+  </div>
+  <div style="padding:16px 20px 8px;font-size:15px;font-weight:600">Raspored</div>
+  <div style="padding:0 20px;display:flex;flex-direction:column;gap:10px;flex:1;min-height:0">
+    <div style="background:#fff;border:1px solid #D9E5ED;border-radius:16px;padding:14px;opacity:0.7">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div style="font-size:15px;font-weight:700">09:00 · Marko Petrović</div>
+        <div style="font-size:12px;font-weight:600;color:#1B6B3A;background:#E3F4EA;border-radius:999px;padding:4px 10px">Završeno</div>
+      </div>
+      <div style="font-size:13px;color:#41566B;margin-top:4px">Redovan servis · Zemun, Glavna 12</div>
+    </div>
+    <div style="background:#fff;border:2px solid #0048BC;border-radius:16px;padding:14px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div style="font-size:15px;font-weight:700">11:30 · Jelena Ilić</div>
+        <div style="font-size:12px;font-weight:600;color:#0048BC;background:#E4F3FF;border-radius:999px;padding:4px 10px">Sledeći</div>
+      </div>
+      <div style="font-size:13px;color:#41566B;margin-top:4px">Ugradnja · Novi Beograd, Bulevar 45/8</div>
+      <div style="font-size:13px;color:#41566B;margin-top:2px">Gree 12000 BTU, zidna</div>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px">
+        <button style="height:48px;border-radius:12px;border:1px solid #0048BC;background:#fff;color:#0048BC;font:600 15px Inter,system-ui,sans-serif">Pozovi</button>
+        <button style="height:48px;border-radius:12px;border:0;background:#0048BC;color:#fff;font:600 15px Inter,system-ui,sans-serif">Navigacija</button>
+      </div>
+      <a href="nalog.html" style="display:flex;align-items:center;justify-content:center;height:48px;border-radius:12px;background:#E4F3FF;color:#0048BC;text-decoration:none;font:600 15px Inter,system-ui,sans-serif;margin-top:8px">Završi nalog</a>
+    </div>
+    <div style="background:#fff;border:1px solid #D9E5ED;border-radius:16px;padding:14px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div style="font-size:15px;font-weight:700">15:00 · Stan Nikolić</div>
+        <div style="font-size:12px;font-weight:600;color:#8A4B08;background:#FDF0DC;border-radius:999px;padding:4px 10px">Kvar</div>
+      </div>
+      <div style="font-size:13px;color:#41566B;margin-top:4px">Ne hladi · Zemun, Cara Dušana 7</div>
+    </div>
+  </div>
+  <a href="termin.html" aria-label="Novi termin" style="position:absolute;right:20px;bottom:88px;height:52px;padding:0 20px;border-radius:26px;background:#0048BC;color:#fff;display:flex;align-items:center;gap:8px;text-decoration:none;font:700 15px Inter,system-ui,sans-serif;box-shadow:0 4px 12px rgba(11,37,64,0.25)">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Novi termin</a>
+  <div style="height:72px;box-sizing:border-box;background:#fff;border-top:1px solid #D9E5ED;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))">
+    <a href="index.html" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#0048BC;text-decoration:none;font-size:12px;font-weight:600">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Danas</a>
+    <a href="kalendar.html" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#41566B;text-decoration:none;font-size:12px;font-weight:500">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Kalendar</a>
+    <a href="klijent.html" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#41566B;text-decoration:none;font-size:12px;font-weight:500">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg>Klijenti</a>
+    <a href="podsetnici.html" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#41566B;text-decoration:none;font-size:12px;font-weight:500">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Podsetnici</a>
+  </div>
+</div>
+</script>
+<script src="dc-lite.js"></script>
+<script>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+DCMount(Component, 'tpl', 'app');
+if ('serviceWorker' in navigator) { window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); }); }
+</script>
+</body>
+</html>
